@@ -70,7 +70,7 @@ async def create_chat(chat_request: ChatRequest):
         response.raise_for_status()
         data = response.json()
         content = data["message"]["content"]
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         logger.error(f"请求失败: {e}")
         content = ""
     Messages.insert_message(

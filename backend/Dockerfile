@@ -11,7 +11,7 @@ RUN sed -i 's@deb.debian.org@mirrors.tuna.tsinghua.edu.cn@g' /etc/apt/sources.li
 # RUN apt-get update && apt-get install -y --no-install-recommends gcc procps vim
 
 # The installer requires curl (and certificates) to download the release archive
-RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates procps vim iputils-ping
 
 WORKDIR /opt/hxq_llm_lite/backend
 
