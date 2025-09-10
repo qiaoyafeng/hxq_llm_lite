@@ -48,4 +48,4 @@ async def healthcheck_with_db():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=32110)
+    uvicorn.run(app, host=settings.HOST, port=settings.PORT)
