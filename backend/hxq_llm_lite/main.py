@@ -1,6 +1,6 @@
 import uvicorn as uvicorn
 from core.config import LOG_PATH, TEMP_PATH, settings
-from core.db import check_db_connection
+from core.db import DATABASE_URL, check_db_connection
 from core.log import logger
 from fastapi import FastAPI
 from routers import chats
@@ -30,9 +30,23 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(chats.router, prefix="/api/chats", tags=["chats"])
 
+logo_ascii = """
+.----------------------------------------------------------------------------------.
+| █████   █████ █████ █████    ██████       █████       █████       ██████   ██████|
+|░░███   ░░███ ░░███ ░░███   ███░░░░███    ░░███       ░░███       ░░██████ ██████ |
+| ░███    ░███  ░░███ ███   ███    ░░███    ░███        ░███        ░███░█████░███ |
+| ░███████████   ░░█████   ░███     ░███    ░███        ░███        ░███░░███ ░███ |
+| ░███░░░░░███    ███░███  ░███   ██░███    ░███        ░███        ░███ ░░░  ░███ |
+| ░███    ░███   ███ ░░███ ░░███ ░░████     ░███      █ ░███      █ ░███      ░███ |
+| █████   █████ █████ █████ ░░░██████░██    ███████████ ███████████ █████     █████|
+|░░░░░   ░░░░░ ░░░░░ ░░░░░    ░░░░░░ ░░    ░░░░░░░░░░░ ░░░░░░░░░░░ ░░░░░     ░░░░░ |
+'----------------------------------------------------------------------------------'
+"""
 
+logger.info(logo_ascii)
 logger.info(f"TEMP_PATH: {TEMP_PATH}")
 logger.info(f"LOG_PATH: {LOG_PATH}")
+logger.info(f"DATABASE_URL: {DATABASE_URL}")
 print(f"settings: {settings}")
 
 

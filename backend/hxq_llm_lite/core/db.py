@@ -16,8 +16,6 @@ else:
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 
-logger.info(f"Using DATABASE_URL: {DATABASE_URL}")
-
 # Create a configured "Session" class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
